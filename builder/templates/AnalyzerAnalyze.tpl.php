@@ -197,7 +197,7 @@ of the view, update operations may not work.  Views are de-selected by default.<
 	</p>
 </form>
 
-<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/analyze.js"></script>
 
 <?php include_once '_footer.tpl.php'; ?>
