@@ -5,14 +5,22 @@
 
 (function($){
 
-	$(document).ready(function(){
+	$(document).ready(function() {
+		
+		try{
+			var applicationName = $( '#appname' ).val();
+			var retrievedObject = JSON.parse(localStorage.getItem( applicationName ) );
+			if( retrievedObject && retrievedObject.length > 0 ) {
+				$('#useLastTableNames').removeClass("disabled");
+			}
+		} catch (e) {
+			console.log( 'Browser does not support localStorage' );
+		}
 		
 		$('#useLastTableNames').click( function(e) {
 			e.preventDefault();
-			try {
-				// Retrieve the object from storage
-				var applicationName = $( '#appname' ).val();
-				var retrievedObject = JSON.parse(localStorage.getItem( applicationName ) );
+			// Retrieve the object from storage
+			if( retrievedObject ) {
 				var len = retrievedObject.length;
 				var i;
 				var id;
@@ -23,9 +31,8 @@
 					id = '#'+retrievedObject[ i ].plural.id;
 					$(id).val(retrievedObject[ i ].plural.val );
 				}
-			} catch ( e ) {
-				console.log( 'Browser does not support localStorage' );
 			}
+
 		});
 		
 		/**
@@ -75,8 +82,12 @@
 			} else {
 				// Put the object into storage
 				try {
-					var applicationName = $( '#appname' ).val();
 					localStorage.setItem(applicationName, JSON.stringify( myTables ) );
+					retrievedObject = JSON.parse(localStorage.getItem( applicationName ) );
+					if( retrievedObject ) {
+						$('#useLastTableNames').removeClass("disabled");
+					}
+					
 				} catch ( e ) {
 					console.log( 'Browser does not support localStorage' );
 				}

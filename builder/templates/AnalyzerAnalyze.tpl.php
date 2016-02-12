@@ -100,7 +100,7 @@ of the view, update operations may not work.  Views are de-selected by default.<
 	</tbody>
 	</table>
 	<div>
-		<button id="useLastTableNames"class="btn"><i class="icon-play"></i> Use Existing Generated Table Names</button>
+		<a href="#" id="useLastTableNames"class="btn disabled"><i class="icon-play"></i> Use Existing Generated Table Names</a>
 	</div>
 	<h2><i class="icon-cogs"></i> Application Options</h2>
 
