@@ -32,6 +32,17 @@ class {$singular}Controller extends AppBaseController
 		// $this->RequirePermission(ExampleUser::$PERMISSION_USER,'SecureExample.LoginForm');
 	}
 
+
+	/**
+	 * Displays a single view of {$singular} objects
+	 */
+	public function SingleView() 
+	{
+  		$pk = $this->GetRouter()->GetUrlParam('{$table->GetPrimaryKeyName()|studlycaps|lcfirst}');
+		${$singular|lower} = $this->Phreezer->Get('{$singular}',$pk);
+  		$this->Render();
+	}
+	
 	/**
 	 * Displays a list view of {$singular} objects
 	 */
