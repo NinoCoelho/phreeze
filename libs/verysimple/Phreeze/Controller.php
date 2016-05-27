@@ -893,6 +893,7 @@ abstract class Controller
 
 		try
 		{
+			ob_start('ob_gzhandler');
 			$output = json_encode($obj);
 		}
 		catch (Exception $ex)
